@@ -1,0 +1,10 @@
+<library path="swerve_hardware">
+  <class name="swerve_hardware/SwerveDriveHardware"
+         type="swerve_hardware::SwerveDriveHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      四转四驱舵轮底盘 ros2_control 硬件接口
+      RS06 转向电机 (CSP 位置控制) + UM 系列轮毂电机 (CANopen PV 速度控制)
+    </description>
+  </class>
+</library>
