@@ -15,15 +15,9 @@ lvx_file_path = os.path.expanduser('~/livox_test.lvx')
 cmdline_bd_code = 'livox0000000001'
 
 cur_path = os.path.split(os.path.realpath(__file__))[0] + '/'
-import sys
-sys.path.insert(0, cur_path)
-# Note: mixed config doesn't use merge, but you can add if needed
-# from lidar_config_helper import merge_lidar_config
-
 cur_config_path = cur_path + '../config'
 rviz_config_path = os.path.join(cur_config_path, 'display_point_cloud_ROS2.rviz')
 user_config_path = os.path.join(cur_config_path, 'mixed_HAP_MID360_config.json')
-# Mixed config is for multiple lidar types, keep original for now
 ################### user configure parameters for ros2 end #####################
 
 livox_ros2_params = [

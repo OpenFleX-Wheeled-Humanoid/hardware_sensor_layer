@@ -4,12 +4,6 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 import launch
 
-# Import lidar config helper
-cur_path = os.path.split(os.path.realpath(__file__))[0] + '/'
-import sys
-sys.path.insert(0, cur_path)
-from lidar_config_helper import merge_lidar_config
-
 ################### user configure parameters for ros2 start ###################
 xfer_format   = 1    # 0-Pointcloud2(PointXYZRTL), 1-customized pointcloud format
 multi_topic   = 0    # 0-All LiDARs share the same topic, 1-One LiDAR one topic
@@ -20,10 +14,9 @@ frame_id      = 'livox_frame'
 lvx_file_path = os.path.expanduser('~/livox_test.lvx')
 cmdline_bd_code = 'livox0000000001'
 
+cur_path = os.path.split(os.path.realpath(__file__))[0] + '/'
 cur_config_path = cur_path + '../config'
-base_config_path = os.path.join(cur_config_path, 'MID360_config.json')
-# Merge user config from ~/.openflex/lidar_config.yaml
-user_config_path = merge_lidar_config(base_config_path)
+user_config_path = os.path.join(cur_config_path, 'MID360_config.json')
 ################### user configure parameters for ros2 end #####################
 
 livox_ros2_params = [

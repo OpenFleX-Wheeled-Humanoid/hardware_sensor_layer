@@ -27,7 +27,6 @@
 #include <vector>
 #include <csignal>
 #include <thread>
-#include <cstdlib>
 
 #include "include/livox_ros_driver2.h"
 #include "include/ros_headers.h"
@@ -116,17 +115,6 @@ int main(int argc, char **argv) {
 #elif defined BUILDING_ROS2
 namespace livox_ros
 {
-namespace
-{
-std::string default_lvx_file_path()
-{
-  const char * home = std::getenv("HOME");
-  if (home && std::string(home).size() > 0) {
-    return std::string(home) + "/livox_test.lvx";
-  }
-  return "livox_test.lvx";
-}
-}  // namespace
 DriverNode::DriverNode(const rclcpp::NodeOptions & node_options)
 : Node("livox_driver_node", node_options)
 {
@@ -148,7 +136,7 @@ DriverNode::DriverNode(const rclcpp::NodeOptions & node_options)
   this->declare_parameter("frame_id", "frame_default");
   this->declare_parameter("user_config_path", "path_default");
   this->declare_parameter("cmdline_input_bd_code", "000000000000001");
-  this->declare_parameter("lvx_file_path", default_lvx_file_path());
+  this->declare_parameter("lvx_file_path", "/home/livox/livox_test.lvx");
 
   this->get_parameter("xfer_format", xfer_format);
   this->get_parameter("multi_topic", multi_topic);
